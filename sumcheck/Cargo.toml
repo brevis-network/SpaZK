@@ -1,0 +1,42 @@
+[package]
+name = "sumcheck"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ark-ff = { workspace = true }
+ark-poly = { workspace = true }
+ark-std = { workspace = true }
+ark-serialize = { workspace = true }
+ark-bn254 = { workspace = true }
+hashbrown = { version = "0.14.0" }
+blake2 = { version = "0.10", default-features = false }
+rayon = { version = "1", optional = true }
+pcs = { path = "../pcs" }
+
+[features]
+default = ["std"]
+std = [
+    "ark-ff/std",
+    "ark-serialize/std",
+    "blake2/std",
+    "ark-std/std",
+    "ark-poly/std",
+    "ark-serialize/std",
+    "ark-bn254/std",
+]
+parallel = [
+    "std",
+    "ark-ff/parallel",
+    "ark-poly/parallel",
+    "ark-std/parallel",
+    "rayon",
+    "pcs/parallel",
+]
+
+[[bench]]
+name = "sumcheck_prover"
+harness = false
+
+[dev-dependencies]
+criterion = "0.5.1"

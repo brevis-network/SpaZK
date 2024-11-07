@@ -1,0 +1,29 @@
+[package]
+name = "gkr"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ark-ff = { workspace = true }
+ark-std = { workspace = true }
+ark-bn254 = { workspace = true }
+criterion = "0.5.1"
+itertools = "0.13.0"
+pcs = { version = "0.1.0", path = "../pcs" }
+rand = "0.8.5"
+rand_chacha = "0.3.1"
+rayon = { version = "1.10.0", optional = true }
+sha3 = "0.10.8"
+sumcheck = { path = "../sumcheck" }
+
+[features]
+default = ["std"]
+std = ["sumcheck/std"]
+parallel = [
+    "std",
+    "sumcheck/parallel",
+    "pcs/parallel",
+    "ark-ff/parallel",
+    "ark-std/parallel",
+    "rayon",
+]

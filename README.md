@@ -1,5 +1,7 @@
 # SpaZK
 
+This repository contains the implementation of [SpaZK](https://eprint.iacr.org/2024/1018).
+
 ## Benchmarks and examples
 
 We prepare the benchmarks for some basic blocks
